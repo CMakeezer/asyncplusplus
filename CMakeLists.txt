@@ -114,11 +114,11 @@ endif()
 include(CMakePackageConfigHelpers)
 configure_package_config_file("${CMAKE_CURRENT_LIST_DIR}/Async++Config.cmake.in"
 	"${PROJECT_BINARY_DIR}/Async++Config.cmake"
-	INSTALL_DESTINATION cmake
+	INSTALL_DESTINATION share/Async++/cmake
 )
 
 install(FILES "${PROJECT_BINARY_DIR}/Async++Config.cmake"
-	DESTINATION cmake
+	DESTINATION share/Async++/cmake
 )
 
 # Install the library and produce a CMake export script
@@ -130,7 +130,7 @@ install(TARGETS Async++
 	FRAMEWORK DESTINATION Frameworks
 )
 export(EXPORT Async++)
-install(EXPORT Async++ DESTINATION cmake)
+install(EXPORT Async++ DESTINATION share/Async++/cmake)
 if (APPLE AND BUILD_FRAMEWORK)
 	set_target_properties(Async++ PROPERTIES OUTPUT_NAME Async++ FRAMEWORK ON)
 	set_source_files_properties(${ASYNCXX_INCLUDE} PROPERTIES MACOSX_PACKAGE_LOCATION Headers/async++)
